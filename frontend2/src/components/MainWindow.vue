@@ -361,9 +361,9 @@ export default {
       };
       let result;
       await axios
-        .post(backend_url, data, {timeout: 100*1000, decompress: false, responseType: 'arraybuffer'})
+        .post(backend_url, data, {timeout: 100*1000, decompress: false})
         .then((data) => {
-          const csv_data = data.data.csv_content;
+          const csv_data = data.data;
           result = csv_data;
         })
         .catch((err) => {
