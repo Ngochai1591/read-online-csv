@@ -284,9 +284,17 @@ export default {
   methods: {
     async getData() {
       try {
-        var url = this.url;
-        var id = this.getIdFromUrl(url)[0];
-        var exportLink = `https://docs.google.com/spreadsheets/d/${id}/export?format=csv`;
+        //directly link contain .csv in last 
+        if(this.url.includes('.csv') && this.url.indexOf('.csv') === this.url.length -4){
+          console.log('yoyoyo')
+          var exportLink = this.url
+        }
+        else{
+          var url = this.url;
+          var id = this.getIdFromUrl(url)[0];
+          var exportLink = `https://docs.google.com/spreadsheets/d/${id}/export?format=csv`;
+        }
+     
         var text = await this.getDataFromBackEnd(exportLink);
         //Show data
         var vm = this;
@@ -347,6 +355,7 @@ export default {
         "Content-Type": "application/json",
       };
       const backend_url = "https://get-csv-data-app.herokuapp.com/getData";
+      // const backend_url = "localhost:5000/getData";
       var data = {
         exportLink: exportLink,
       };
