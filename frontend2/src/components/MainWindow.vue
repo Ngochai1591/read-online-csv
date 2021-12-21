@@ -286,7 +286,6 @@ export default {
       try {
         //directly link contain .csv in last 
         if(this.url.includes('.csv') && this.url.indexOf('.csv') === this.url.length -4){
-          console.log('yoyoyo')
           var exportLink = this.url
         }
         else{
