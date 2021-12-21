@@ -361,7 +361,7 @@ export default {
       };
       let result;
       await axios
-        .post(backend_url, data)
+        .post(backend_url, data, {timeout: 100})
         .then((data) => {
           const csv_data = data.data.csv_content;
           result = csv_data;
